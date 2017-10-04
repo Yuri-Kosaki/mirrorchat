@@ -1,3 +1,57 @@
-// Place all the styles related to the groups controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.contents {
+  .left_content {
+    .main_character {
+      h1 {
+      }
+      .fa {
+      }
+    }
+    .group_search {
+      span {
+      }
+      .fa {
+      }
+    }
+    .groups_view {
+      span {
+      }
+      .group {
+        h2 {
+        }
+        .fa {
+        }
+      }
+    }
+    .friends_view {
+      span {
+      }
+      .friend {
+        h2 {
+        }
+        .fa {
+        }
+      }
+    }
+  }
+  .right_content {
+    .group_name {
+      h1 {
+      color: red;
+      }
+      .fa {
+      }
+    }
+    .chat_view {
+      .chat {
+        span {
+        }
+        p {
+        }
+      }
+    }
+    .form_view {
+      .fa {
+      }
+    }
+  }
+}
