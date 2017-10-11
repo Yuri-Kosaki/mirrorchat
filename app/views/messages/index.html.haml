@@ -1,0 +1,24 @@
+.content.clearfix
+  .left_content
+    .main_character.clearfix
+      %h1 小崎優吏
+      %i.fa.fa-cog{"aria-hidden" => "true"}
+      = link_to new_group_path do
+        %i.fa.fa-users{"aria-hidden" => "true"}
+      %i.fa.fa-user-plus{"aria-hidden" => "true"}
+      %i.fa.fa-user-circle{"aria-hidden" => "true"}
+    .group_search.clearfix
+      %span グループを検索してください
+      = form_for(@groups) do |f|
+        = f.text_field :name
+      %i.fa.fa-search{"aria-hidden" => "true"}
+    .groups_view
+      %span グループ
+      .group.clearfix
+        %i.fa.fa-times{"aria-hidden" => "true"}
+        %span 葺合同窓会
+    .friends_view
+      %span 友達
+      .friend.clearfix
+        %i.fa.fa-times{"aria-hidden" => "true"}
+        %span 霜浦響

@@ -3,12 +3,16 @@
     .main_character.clearfix
       %h1 小崎優吏
       %i.fa.fa-cog{"aria-hidden" => "true"}
-      %i.fa.fa-users{"aria-hidden" => "true"}
+      = link_to new_group_path do
+        %i.fa.fa-users{"aria-hidden" => "true"}
       %i.fa.fa-user-plus{"aria-hidden" => "true"}
       %i.fa.fa-user-circle{"aria-hidden" => "true"}
     .group_search.clearfix
-      %span グループを検索してください
-      %i.fa.fa-search{"aria-hidden" => "true"}
+      = form_for(@group) do |f|
+        = f.label :name, "グループを検索してください", class: "group--search__label"
+        = f.text_field :name, class: "group-search-form__input"
+        = button_tag type: 'submit', class: "group-search-btn" do
+          %i.fa.fa-search{"aria-hidden" => "true"}
     .groups_view
       %span グループ
       .group.clearfix
@@ -35,4 +39,3 @@
     .form_view.clearfix
       %i.fa.fa-paper-plane{"aria-hidden" => "true"}
       %i.fa.fa-picture-o{"aria-hidden" => "true"}
-%footer.clearfix
