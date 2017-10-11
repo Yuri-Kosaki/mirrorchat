@@ -1,57 +1,168 @@
-.contents {
+.content.clearfix {
+  background-color: #FFFFFF;
+  width: 100vw;
+
   .left_content {
-    .main_character {
+    width: 300px;
+    min-height: calc((100vh - 300px));;
+    color: #FFFFFF;
+    float: left;
+
+
+    .main_character.clearfix {
+      height: 100px;
+      background-color: #2F4F4F;
       h1 {
+        padding-left: 20px;
+        line-height: 75px;
+        font-size: 20px;
       }
       .fa {
+        padding-left: 40px;
+        float: right;
+        display: inline-block;
+        font-size: 20px;
       }
     }
-    .group_search {
+    .group_search.clearfix {
+      height: 100px;
+      background-color: #4682B4;
       span {
+        line-height: 50px;
+        padding-left: 20px;
       }
       .fa {
+        position: absolute;
+        display: inline-block;
+        line-height: 100px;
+        float: right;
+        font-size: 20px;
       }
     }
     .groups_view {
+      height: 300px;
+      background-color: #5F9EA0;
+      overflow: scroll;
+      -webkit-overflow-scrolling: touch;
       span {
+        line-height: 50px;
       }
-      .group {
-        h2 {
+      .group.clearfix {
+        border: solid 1px #5F9EA0;
+
+        span {
+          line-height: 50px;
+          padding-left: 20px;
+          font-size: 20px;
         }
+
         .fa {
+          float: right;
+          display: inline-block;
+          line-height: 50px;
+          font-size: 20px;
+
         }
       }
     }
     .friends_view {
+      height: 300px;
+      background-color: #5F9EA0;
+      overflow: scroll;
+      -webkit-overflow-scrolling: touch;
       span {
+        line-height: 50px;
       }
-      .friend {
-        h2 {
+      .friend.clearfix {
+        border: solid 1px #5F9EA0;
+
+        span {
+          line-height: 50px;
+          padding-left: 20px;
+          font-size: 20px;
         }
         .fa {
+          float: right;
+          display: inline-block;
+          line-height: 50px;
+          font-size: 20px;
         }
       }
     }
   }
   .right_content {
-    .group_name {
-      h1 {
-      color: red;
+    width: calc((100vw - 300px));;
+    height: 100%;
+    float: right;
+
+    .group_name.clearfix {
+      background-color: #A9A9A9;
+      height: 100px;
+      span {
+        padding-left: 40px;
+        line-height: 80px;
+        font-size: 32px;
       }
+
       .fa {
+        float: right;
+        display: inline-block;
+        padding-left: 30px;
+        line-height: 90px;
+        font-size: 30px;
       }
     }
     .chat_view {
-      .chat {
+      background-color: #87CEEB;
+      height: 550px;
+      overflow: scroll;
+      -webkit-overflow-scrolling: touch;
+      padding: 20px 30px 20px 30px;
+      .chat.clearfix {
+        background-color: #FFFFFF;
+        color: black;
+        width: 300px;
+        opacity: 0.5;
+        border-radius: 20px;
+        padding-left: 15px;
+
         span {
+          text-align: left;
+          font-weight: bold;
+          font-size: 20px;
         }
         p {
+          display: inline-block;
+          line-height: 30px;
+          text-align: left;
+          padding-left: 20px;
+          opacity: 0.3;
+        }
+        h5 {
+          text-align: left;
+          line-height: 40px;
+        }
+        .fa {
+          float: right;
+          display: inline-block;
+          line-height: 35px;
+          padding-left: 10px;
+          font-size: 20px;
         }
       }
     }
-    .form_view {
+    .form_view.clearfix {
+      background-color: #4682B4;
+      height: 100px;
       .fa {
+        font-size: 30px;
+        float: right;
+        padding-right: 40px;
+        display: inline-block;
+        line-height: 100px;
       }
     }
   }
 }
+
+
