@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root to: "messages#index"
+  root to: "groups#index"
 
   resources :groups do
     resources :messages
