@@ -15,27 +15,15 @@
           %i.fa.fa-search{"aria-hidden" => "true"}
     .groups_view
       %span グループ
-      .group.clearfix
-        %i.fa.fa-times{"aria-hidden" => "true"}
-        %span 葺合同窓会
+      - @groups.each do |group|
+        = link_to group_messages_path(group) do
+          .group.clearfix
+            %i.fa.fa-times{"aria-hidden" => "true"}
+            %span
+              = group.name
     .friends_view
       %span 友達
       .friend.clearfix
         %i.fa.fa-times{"aria-hidden" => "true"}
         %span 霜浦響
-  .right_content
-    .group_name.clearfix
-      %span 葺合同窓会
-      %i.fa.fa-sign-out{"aria-hidden" => "true"}
-      %i.fa.fa-pencil-square-o{"aria-hidden" => "true"}
-      %i.fa.fa-cog{"aria-hidden" => "true"}
-    .chat_view
-      .chat.clearfix
-        %span 小崎優吏
-        %p 09/13/19:47
-        %i.fa.fa-times{"aria-hidden" => "true"}
-        %i.fa.fa-pencil-square-o{"aria-hidden" => "true"}
-        %h5 ああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
-    .form_view.clearfix
-      %i.fa.fa-paper-plane{"aria-hidden" => "true"}
-      %i.fa.fa-picture-o{"aria-hidden" => "true"}
+

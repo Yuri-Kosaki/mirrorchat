@@ -31,10 +31,11 @@
         line-height: 50px;
         padding-left: 20px;
       }
-      .fa {
+      .group-search-btn {
+        font-family: FontAwesome;
         position: absolute;
         display: inline-block;
-        line-height: 100px;
+        background-color: #4682B4;
         float: right;
         font-size: 20px;
       }
@@ -125,6 +126,7 @@
         opacity: 0.5;
         border-radius: 20px;
         padding-left: 15px;
+        margin-top: 30px;
 
         span {
           text-align: left;
@@ -140,7 +142,7 @@
         }
         h5 {
           text-align: left;
-          line-height: 40px;
+          line-height: 30px;
         }
         .fa {
           float: right;
@@ -154,12 +156,25 @@
     .form_view.clearfix {
       background-color: #4682B4;
       height: 100px;
-      .fa {
+      .form-field {
+        height: 40px;
+        width: 800px;
+        margin-left: 30px;
+        margin-top: 30px;
+      }
+      .image-label {
+        .fa {
+        margin-top: 30px;
+        background-color: #4682B4;
+        height: 50px;
         font-size: 30px;
-        float: right;
-        padding-right: 40px;
-        display: inline-block;
-        line-height: 100px;
+        }
+      }
+      .message-submit-btn {
+        background-color: #4682B4;
+        .fa {
+        font-size: 30px;
+        }
       }
     }
   }
