@@ -44,6 +44,10 @@ group :development, :test do
   gem 'haml-rails', '~>0.9'
 
   gem 'erb2haml'
+
+  gem 'devise'
+
+  gem 'pry-rails'
 end
 
 group :development do
