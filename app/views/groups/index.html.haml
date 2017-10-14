@@ -1,7 +1,8 @@
 .content.clearfix
   .left_content
     .main_character.clearfix
-      %h1 小崎優吏
+      %h1
+        = current_user.name
       %i.fa.fa-cog{"aria-hidden" => "true"}
       = link_to new_group_path do
         %i.fa.fa-users{"aria-hidden" => "true"}
@@ -23,7 +24,9 @@
               = group.name
     .friends_view
       %span 友達
-      .friend.clearfix
-        %i.fa.fa-times{"aria-hidden" => "true"}
-        %span 霜浦響
+      - @users.each do |user|
+        .friend.clearfix
+          %i.fa.fa-times{"aria-hidden" => "true"}
+          %span
+            = user.name
 

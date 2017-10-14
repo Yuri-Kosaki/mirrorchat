@@ -3,6 +3,7 @@ class GroupsController < ApplicationController
   def index
     @group = Group.new
     @groups = Group.order("created_at ASC")
+    @users = User.order("created_at ASC")
   end
 
   def new
@@ -16,8 +17,32 @@ class GroupsController < ApplicationController
     end
   end
 
+  def edit
+    @group = Group.find(params[:id])
+  end
+
+  def update
+    @group = Group.find(params[:id])
+
+    if @group.update(update_group_params)
+      redirect_to group_messages_path(@group)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @group = Group.find(params[:id])
+      @group.destroy
+      redirect_to root_path
+  end
+
   private
   def group_params
     params.require(:group).permit(:name)
+  end
+
+  def update_group_params
+    params.require(:group).permit(:name, messages_attributes: [:text, :created_at, :_destroy, :id])
   end
 end
