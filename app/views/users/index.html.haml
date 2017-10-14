@@ -17,7 +17,7 @@
     .groups_view
       %span グループ
       - @groups.each do |group|
-        = link_to group_messages_path(group) do
+        = link_to group_user_messages_path(group) do
           .group.clearfix
             %i.fa.fa-times{"aria-hidden" => "true"}
             %span
@@ -32,14 +32,12 @@
   .right_content
     .group_name.clearfix
       %span
-        = @group.name
-      = link_to group_path(@group), method: :delete do
-        %i.fa.fa-sign-out{"aria-hidden" => "true"}
-      = link_to edit_group_path(@group) do
-        %i.fa.fa-pencil-square-o{"aria-hidden" => "true"}
+        = @user.name
+      %i.fa.fa-sign-out{"aria-hidden" => "true"}
+      %i.fa.fa-pencil-square-o{"aria-hidden" => "true"}
       %i.fa.fa-cog{"aria-hidden" => "true"}
     .chat_view
-      - @group.messages.each do |message|
+      - @user.messages.each do |message|
         .chat.clearfix
           %span
             = current_user.name
@@ -50,7 +48,7 @@
           %h5
             = message.text
     .form_view.clearfix
-      = form_for([@group, @message]) do |f|
+      = form_for([@user, @message]) do |f|
         = f.text_field :text, class: "form-field", placeholder: "テキストを入力してください"
         = f.label :image, class: "image-label" do
           %i.fa.fa-picture-o{"aria-hidden" => "true"}
