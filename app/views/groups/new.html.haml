@@ -1,4 +1,5 @@
 .chat-group-form
+  %h1 新規チャットグループ
   = form_for(@group, id: 'new_groups') do |f|
     - if @group.errors.any?
       .chat-group-form__errors
@@ -12,6 +13,24 @@
         = f.label :name, "グループ名", class: "chat-group-form__label"
       .chat-group-form__field--right
         = f.text_field :name, class: "chat-group-form__input", placeholder: "グループ名を入力してください"
+    .chat-group-form__field.clearfix
+      .chat-group-form__field--left
+        = label :user, "チャットメンバーを追加", class: "chat-group-form__label"
+      .chat-group-form__field--right
+        .chat-group-form__search.clearfix
+          = text_field :user, :name, class: "chat-group-form__input", id: "user-search-field", placeholder: "追加したいユーザー名を入力してください"
+        #user-search-result
+    .chat-group-form__field.clearfix
+      .chat-group-form__field--left
+        = f.label :user_ids, "チャットメンバー", class: "chat-group-form__label"
+      .chat-group-form__field--right
+        #chat-group-users
+          - @group.users.each do |user|
+            #chat-group-user-8.chat-group-user.clearfix.js-chat-member
+              = hidden_field_tag "group[user_ids][]", user.id
+            %p.chat-group-user__name
+              = user.name
+            %a.user-search-remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn 削除
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
       .chat-group-form__field--right
