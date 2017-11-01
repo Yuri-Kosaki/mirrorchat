@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
 
   def index
+    @group = Group.find(params[:group_id])
     @users = User.order("created_at ASC")
     @groups = Group.order("created_at ASC")
     @message = Message.new
