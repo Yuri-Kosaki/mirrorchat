@@ -1,0 +1,38 @@
+%h2 Sign up
+= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  = devise_error_messages!
+  .field
+    = f.label :name
+    %em (8 characters maximum)
+    %br/
+    = f.text_field :name, autofocus: true, maxlength: "8"
+  .field
+    = f.label :email
+    %br/
+    = f.email_field :email, autofocus: true
+  .field
+    = f.label :password
+    - if @minimum_password_length
+      %em
+        (#{@minimum_password_length} characters minimum)
+    %br/
+    = f.password_field :password, autocomplete: "off"
+  .field
+    = f.label :password_confirmation
+    %br/
+    = f.password_field :password_confirmation, autocomplete: "off"
+  .field
+    = f.label :hobby
+    %br/
+    = f.text_area :hobby, autofocus: true, placeholder: "あなたの趣味はなんですか？"
+  .field
+    = f.label :place
+    %br/
+    = f.text_area :place, autofocus: true, placeholder: "あなたはどこにお住まいですか？"
+  .field
+    = f.label :year
+    %br/
+    = f.text_field :year, autofocus: true, placeholder: "〇〇年××月△△日生"
+  .actions
+    = f.submit "Sign up"
+= render "devise/shared/links"

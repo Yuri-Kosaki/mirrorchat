@@ -1,0 +1,20 @@
+.content.clearfix
+  = render "module/sidemenu"
+  .right_content.clearfix
+    = form_for(@building, id: 'new_building') do |f|
+      - if @building.errors.any?
+        .chat-group-form__errors
+        %h2
+          #{@building.errors.count}件のエラーが発生しました。
+          %ul
+            - @building.errors.full_messages.each do |full_message|
+              %li #{full_message}
+      = f.label :facility, "施設名", class: "facility-label"
+      = f.text_field :facility, class: "facility-form", placeholder: "施設を入力してください"
+      = f.label :explanation, "説明", class: "explanation-label"
+      = f.text_area :explanation, placeholder: "施設の説明をしてください", size: "100px", class: "explanation-form"
+      = f.label :access, "アクセス", class: "access-label"
+      = f.text_field :access, class: "access-form"
+      = f.label :telephone_number, "電話番号", class: "telephone-label"
+      = f.text_field :telephone_number, class: "telephone-form"
+      = f.submit "保存", class: "information-save"
