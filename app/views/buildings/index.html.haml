@@ -1,0 +1,35 @@
+.content.clearfix
+  = render "module/sidemenu"
+  .right_content
+    .header
+      %h1 お近くの公共機関、ショッピングセンターなどを紹介します。
+    .new_facility.clearfix
+      = link_to new_building_path do
+        %i.fa.fa-plus{"aria-hidden" => "true"}
+    .facility-search.clearfix
+      = label :building, "施設を検索してください", class: "facility-search-label"
+      = text_field :building, :facility, class: "facility-search-form"
+      = button_tag type: 'submit', class: "facility-search-button" do
+        %i.fa.fa-search{"aria-hidden" => "true"}
+    #facility-search-result
+
+    .facility__view.clearfix
+      .facility-label
+        = label :building, "検索結果", class: "-search-result-label"
+      .facility-result.clearfix
+        - @buildings.each do |fac|
+          .facility-information
+            = link_to edit_building_path(fac) do
+              %i.fa.fa-pencil-square-o{"aria-hidden" => "true"}
+            = link_to building_path(fac), method: :delete do
+              %i.fa.fa-close{"aria-hidden" => "true"}
+            %h1.facility__name
+              = fac.facility
+            %p.facility__explanation
+              = fac.explanation
+            %h5.facility-access
+              = fac.access
+            %h5.facility-phone
+              = fac.telephone_number
+      .pagination.clearfix
+        = paginate(@buildings)

@@ -48,6 +48,10 @@ group :development, :test do
   gem 'devise'
 
   gem 'pry-rails'
+
+  gem 'kaminari'
+
+  gem 'nested_form_fields'
 end
 
 group :development do

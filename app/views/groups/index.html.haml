@@ -1,34 +1,3 @@
 .content.clearfix
-  .left_content
-    .main_character.clearfix
-      %h1
-        = current_user.name
-      %i.fa.fa-cog{"aria-hidden" => "true"}
-      = link_to new_group_path do
-        %i.fa.fa-users{"aria-hidden" => "true"}
-      %i.fa.fa-newspaper-o{"aria-hidden" => "true"}
-      = link_to root_path do
-        %i.fa.fa-home{"aria-hidden" => "true"}
-    .group_search.clearfix
-      = form_for(@group) do |f|
-        = f.label :name, "グループを検索してください", class: "group--search__label"
-        = f.text_field :name, class: "group-search-form__input"
-        = button_tag type: 'submit', class: "group-search-btn" do
-          %i.fa.fa-search{"aria-hidden" => "true"}
-    .groups_view
-      %span グループ
-      - @groups.each do |group|
-        = link_to group_messages_path(group) do
-          .group.clearfix
-            %i.fa.fa-comments{"aria-hidden" => "true"}
-            %span
-              = group.name
-    .friends_view
-      %span 友達
-      - @users.each do |user|
-        = link_to chat_user_messages_path(user) do
-          .friend.clearfix
-            %i.fa.fa-comments{"aria-hidden" => "true"}
-            %span
-              = user.name
+  = render "module/sidemenu"
 

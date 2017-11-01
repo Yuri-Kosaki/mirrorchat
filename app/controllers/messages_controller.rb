@@ -5,14 +5,12 @@ class MessagesController < ApplicationController
     @users = User.order("created_at ASC")
     @groups = Group.order("created_at ASC")
     @message = Message.new
-    @group__search = Group.new
   end
 
   def chat
     @users = User.order("created_at ASC")
     @groups = Group.order("created_at ASC")
     @message = Message.new
-    @group__search = Group.new
   end
 
   def create
@@ -34,6 +32,12 @@ class MessagesController < ApplicationController
     if @message.update
       redirect_to group_messages_path
     end
+  end
+
+  def destroy
+    @message = Message.find(params[:id])
+    @message.destroy
+    redirect_to group_messages_path
   end
 
   private
