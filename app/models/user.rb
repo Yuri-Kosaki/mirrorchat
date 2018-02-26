@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+
+  validates :name, :place, :year, uniqueness: true
+  validates :name, :place, :year, presence: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
