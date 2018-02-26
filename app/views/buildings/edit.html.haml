@@ -9,12 +9,18 @@
           %ul
             - @building.errors.full_messages.each do |full_message|
               %li #{full_message}
-      = f.label :facility, "施設名", class: "facility-label"
-      = f.text_field :facility, class: "facility-form", placeholder: "施設を入力してください"
-      = f.label :explanation, "説明", class: "explanation-label"
-      = f.text_area :explanation, placeholder: "施設の説明をしてください", size: "100px", class: "explanation-form"
-      = f.label :access, "アクセス", class: "access-label"
-      = f.text_field :access, class: "access-form"
-      = f.label :telephone_number, "電話番号", class: "telephone-label"
-      = f.text_field :telephone_number, class: "telephone-form"
-      = f.submit "保存", class: "information-save"
+      .new-facility__information
+        .new-facility__name
+          = f.label :facility, "施設名", class: "facility-label"
+          = f.text_field :facility, class: "facility-form", placeholder: "施設を入力してください"
+        .new-facility__explanation
+          = f.label :explanation, "説明", class: "explanation-label"
+          = f.text_area :explanation, placeholder: "施設の説明をしてください", size: "100px", class: "explanation-form"
+        .new-facility__access
+          = f.label :access, "アクセス", class: "access-label"
+          = f.text_field :access, class: "access-form"
+        .new-facility__phone
+          = f.label :telephone_number, "電話番号", class: "telephone-label"
+          = f.text_field :telephone_number, class: "telephone-form"
+        .save
+          = f.submit "保存", class: "information-save"

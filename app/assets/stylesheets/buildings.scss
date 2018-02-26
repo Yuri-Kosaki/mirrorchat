@@ -1,3 +1,89 @@
-// Place all the styles related to the buildings controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.right_content {
+  .facility {
+    height: 170px;
+    padding: 30px;
+    background-color: #0080FF;
+    .header {
+      padding-bottom: 20px;
+      p {
+        text-align: center;
+        font-size: 14px;
+      }
+      h1 {
+        text-align: center;
+        font-size: 30px;
+        font-weight: bold;
+      }
+    }
+
+    .new_facility.clearfix {
+      float: right;
+      font-size: 20px;
+      padding-right: 25px;
+    }
+
+    .facility-search.clearfix {
+      .facility-search-label {
+        font-size: 15px;
+      }
+      .facility-search-form {
+        height: 40px;
+        width: 400px;
+        margin-left: 90px;
+      }
+      .facility-search-button {
+        background-color: #0080FF;
+        .fa {
+          font-size: 30px;
+        }
+      }
+    }
+  }
+
+  .facility__view.clearfix {
+    .facility-label {
+      background-color: #D8D8D8;
+      .search-result-label {
+        font-size: 30px;
+        font-weight: bold;
+      }
+    }
+
+    .facility-result.clearfix {
+      height: 500px;
+      overflow: scroll;
+      -webkit-overflow-scrolling: touch;
+      .facility-information {
+        min-height: 200px;
+        border: solid 1px;
+
+        h2 {
+          text-align: right;
+        }
+
+        h1 {
+          font-weight: bold;
+          font-size: 20px;
+        }
+
+        p {
+          font-size: 16px;
+        }
+
+        .facility__name {
+        }
+        .facility__explanation {
+        }
+
+        .facility__access {
+        }
+
+        .facility__phone {
+        }
+      }
+
+      .pagination.clearfix {
+      }
+    }
+  }
+}

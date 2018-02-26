@@ -1,7 +1,5 @@
 class Building < ApplicationRecord
 
-  validates :facility, presence: true
-  validates :explanation, presence: true
-  validates :access, presence: true
-  validates :telephone_number, presence: true
+  validates :facility, :explanation, :access, :telephone_number, presence: true
+  validates :facility, uniqueness: true
 end
