@@ -38,10 +38,10 @@ class GroupsController < ApplicationController
 
   private
   def group_params
-    params.require(:group).permit(:name, user_ids: [])
+    params.require(:group).permit(:name, {user_ids: []})
   end
 
   def update_group_params
-    params.require(:group).permit(:name, user_ids: [], messages_attributes: [:text, :created_at, :_destroy, :id])
+    params.require(:group).permit(:name, {user_ids: []}, messages_attributes: [:text, :created_at, :_destroy, :id])
   end
 end

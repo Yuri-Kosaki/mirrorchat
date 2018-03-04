@@ -1,5 +1,5 @@
 .content.clearfix
-  = render "module/sidemenu"
+  = render "module/groupsidemenu"
   .right_content
     .group_name.clearfix
       %span
@@ -10,21 +10,22 @@
         %i.fa.fa-pencil-square-o{"aria-hidden" => "true"}
       %i.fa.fa-cog{"aria-hidden" => "true"}
     .chat_view
-      - @group.messages.each do |message|
-        .chat.clearfix
-          %span
-            = current_user.name
-          %p
-            = message.created_at.strftime("%Y/%m/%d %H:%M:%S")
-          %i.fa.fa-times{"aria-hidden" => "true"}
-          %i.fa.fa-pencil-square-o{"aria-hidden" => "true"}
-          %i.fa.fa-reply{"aria-hidden" => "true"}
-          %h5
-            = message.text
+      #message-field
+        - @group.messages.each do |message|
+          .chat.clearfix{ "data-message-id": "#{message.id}"}
+            %span
+              = message.user.name
+            %p
+              = message.created_at.strftime("%Y/%m/%d %H:%M:%S")
+            %i.fa.fa-times{"aria-hidden" => "true"}
+            %i.fa.fa-pencil-square-o{"aria-hidden" => "true"}
+            %i.fa.fa-reply{"aria-hidden" => "true"}
+            %h5
+              = message.text
     .form_view.clearfix
       = form_for([@group, @message]) do |f|
         = f.text_field :text, class: "form-field", placeholder: "テキストを入力してください"
         = f.label :image, class: "image-label" do
           %i.fa.fa-picture-o{"aria-hidden" => "true"}
-        = button_tag type: "submit", class: "message-submit-btn" do
+        = button_tag type: "submit", id: "message-submit-btn", data: {disable_with: false } do
           %i.fa.fa-paper-plane{"aria-hidden" => "true"}
