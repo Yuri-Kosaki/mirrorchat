@@ -6,12 +6,19 @@ class MessagesController < ApplicationController
     @users = User.order("created_at ASC")
     @groups = Group.order("created_at ASC")
     @message = Message.new
+    @messages = @group.messages.order(created_at: :DESC).includes(:user)
+
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def chat
     @users = User.order("created_at ASC")
     @groups = Group.order("created_at ASC")
     @message = Message.new
+    @user = User.find(params[:user_id])
   end
 
   def create
@@ -19,7 +26,12 @@ class MessagesController < ApplicationController
     @group = Group.find(params[:group_id])
 
     if @group_message.save
-      redirect_to group_messages_path(@group)
+      respond_to do |format|
+        format.html { redirect_to :group_messages, notice: "メッセージを更新しました。" }
+        format.json
+      end
+    else
+      render :index
     end
   end
 

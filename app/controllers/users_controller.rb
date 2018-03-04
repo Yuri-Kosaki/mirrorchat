@@ -28,6 +28,14 @@ class UsersController < ApplicationController
       redirect_to root_path
   end
 
+  def chat
+    @users = User.where('name LIKE ?', "%#{params[:name]}%")
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
   private
   def update_user_params
     params.require(:user).permit(:name, :hobby, :place, :year, messages_attributes: [:text, :created_at, :_destroy, :id])
