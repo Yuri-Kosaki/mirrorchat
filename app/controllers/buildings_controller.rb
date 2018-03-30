@@ -2,13 +2,13 @@ class BuildingsController < ApplicationController
 
   def index
     @groups = Group.order("created_at ASC")
-    @users = User.order("created_at ASC")
+    @rooms = Room.order("created_at ASC")
     @buildings = Building.order("created_at ASC").page(params[:page]).per(5)
   end
 
   def new
     @groups = Group.order("created_at ASC")
-    @users = User.order("created_at ASC")
+    @rooms = Room.order("created_at ASC")
     @building = Building.new
   end
 
@@ -22,7 +22,7 @@ class BuildingsController < ApplicationController
 
   def edit
     @groups = Group.order("created_at ASC")
-    @users = User.order("created_at ASC")
+    @rooms = Room.order("created_at ASC")
     @building = Building.find(params[:id])
   end
 

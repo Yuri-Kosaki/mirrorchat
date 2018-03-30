@@ -1,31 +1,15 @@
 .content.clearfix
-  = render "module/groupsidemenu"
+  = render partial: 'module/sidemenu', locals: {groups: @groups, rooms: @rooms}
   .right_content
     .group_name.clearfix
-      %span
-        = @group.name
-      = link_to group_path(@group), method: :delete do
-        %i.fa.fa-sign-out{"aria-hidden" => "true"}
-      = link_to edit_group_path(@group) do
-        %i.fa.fa-pencil-square-o{"aria-hidden" => "true"}
-      %i.fa.fa-cog{"aria-hidden" => "true"}
+      = render partial: 'module/group-header', locals: {group: @group}
     .chat_view
-      #message-field
-        - @group.messages.each do |message|
-          .chat.clearfix{ "data-message-id": "#{message.id}"}
-            %span
-              = message.user.name
-            %p
-              = message.created_at.strftime("%Y/%m/%d %H:%M:%S")
-            %i.fa.fa-times{"aria-hidden" => "true"}
-            %i.fa.fa-pencil-square-o{"aria-hidden" => "true"}
-            %i.fa.fa-reply{"aria-hidden" => "true"}
-            %h5
-              = message.text
+      = render partial: 'message', locals: {group: @group}
     .form_view.clearfix
-      = form_for([@group, @message]) do |f|
+      = form_for([@group, @message], :html => { :multipart => true}) do |f|
         = f.text_field :text, class: "form-field", placeholder: "テキストを入力してください"
-        = f.label :image, class: "image-label" do
-          %i.fa.fa-picture-o{"aria-hidden" => "true"}
+        = f.label :image, class: "message_image_label"do
+          = fa_icon 'picture-o', class: "message_icon"
+          = f.file_field :image, style: "display: none"
         = button_tag type: "submit", id: "message-submit-btn", data: {disable_with: false } do
           %i.fa.fa-paper-plane{"aria-hidden" => "true"}

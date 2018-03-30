@@ -69,6 +69,14 @@
       padding: 10px 15px;
       box-sizing: border-box;
     }
+
+    .chat-group-form__textarea {
+      float: right;
+      width: 95%;
+      height: 250px;
+      line-height: 30px;
+      padding: 10px 15px;
+    }
   }
 
   .chat-group-user {

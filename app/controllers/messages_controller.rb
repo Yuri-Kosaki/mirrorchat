@@ -6,7 +6,8 @@ class MessagesController < ApplicationController
     @users = User.order("created_at ASC")
     @groups = Group.order("created_at ASC")
     @message = Message.new
-    @messages = @group.messages.order(created_at: :DESC).includes(:user)
+    @rooms = Room.order("created_at ASC")
+    @group_comment = @group.comments.all
 
     respond_to do |format|
       format.html
@@ -14,28 +15,21 @@ class MessagesController < ApplicationController
     end
   end
 
-  def chat
-    @users = User.order("created_at ASC")
-    @groups = Group.order("created_at ASC")
-    @message = Message.new
-    @user = User.find(params[:user_id])
-  end
-
   def create
-    @group_message = Message.new(message_params)
     @group = Group.find(params[:group_id])
+    @group_message = @group.messages.create(message_params)
 
     if @group_message.save
-      respond_to do |format|
-        format.html { redirect_to :group_messages, notice: "メッセージを更新しました。" }
-        format.json
-      end
+      redirect_to group_messages_path(@group)
     else
       render :index
     end
   end
 
+
   def edit
+    @groups = Group.order("created_at ASC")
+    @rooms = Room.order("created_at ASC")
     @message = Message.find(params[:id])
   end
 
@@ -45,6 +39,14 @@ class MessagesController < ApplicationController
     if @message.update
       redirect_to group_messages_path
     end
+  end
+
+  def show
+    @groups = Group.order("created_at ASC")
+    @rooms = Room.order("created_at ASC")
+    @group = Group.find(params[:group_id])
+    @message = Message.find(params[:id])
+    @comment = Comment.new
   end
 
   def destroy

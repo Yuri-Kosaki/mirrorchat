@@ -1,0 +1,18 @@
+.content.clearfix
+  = render partial: 'module/sidemenu', locals: {groups: @groups, rooms: @rooms}
+  .right_content.clearfix
+    .group_name.clearfix
+      = render partial: 'module/group-header', locals: {group: @group}
+    .message-field
+      = text_field :message, :text, class: "message-field"
+    .comment-form
+      = form_for([@group, @message, @comment]) do |f|
+        = f.text_field :text, class: "comment-field", placeholder: "コメントしてください"
+        = f.label :image, class: "message_image_label"do
+          = fa_icon 'picture-o', class: "message_icon"
+          = f.file_field :image, style: "display: none"
+        = button_tag type: "submit" do
+          %i.fa.fa-paper-plane{"aria-hidden" => "true"}
+
+    .comment-view
+      = render partial: 'comment', locals: {group: @group}

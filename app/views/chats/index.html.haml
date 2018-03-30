@@ -1,0 +1,22 @@
+.content.clearfix
+  = render partial: 'module/sidemenu', locals: {groups: @groups, rooms: @rooms}
+  .right_content
+    .group_name.clearfix
+      %span
+        = @room.name
+      = link_to room_path(@room), method: :delete do
+        %i.fa.fa-sign-out{"aria-hidden" => "true"}
+      = link_to "https://www.google.co.jp" do
+        %i.fa.fa-chrome{"aria-hidden" => "true"}
+      = link_to "https://www.youtube.com" do
+        %i.fa.fa-youtube-play{"aria-hidden" => "true"}
+    .chat_view
+      = render partial: 'chat', locals: {room: @room}
+    .form_view.clearfix
+      = form_for([@room, @chat]) do |f|
+        = f.text_field :text, class: "form-field", placeholder: "テキストを入力してください"
+        = f.label :image, class: "message_image_label"do
+          = fa_icon 'picture-o', class: "message_icon"
+          = f.file_field :image, style: "display: none"
+        = button_tag type: "submit", id: "message-submit-btn" do
+          %i.fa.fa-paper-plane{"aria-hidden" => "true"}
