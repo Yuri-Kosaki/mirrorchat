@@ -1,0 +1,41 @@
+.content.clearfix
+  = render partial: 'module/sidemenu', locals: {groups: @groups, rooms: @rooms}
+  .right_content
+    .header
+      %h1 タイムライン
+    .middle
+      .timeline_form
+        = form_for(@timeline) do |f|
+          %h2
+            = current_user.name
+          = f.text_area :text, class: "timeline__form", placeholder: "あなたが今日起こった出来事を書こう"
+          = f.label :image, class: "message_image_label"do
+            = fa_icon 'picture-o', class: "message_icon"
+            = f.file_field :image, style: "display: none"
+          = button_tag type: "submit" do
+            %i.fa.fa-paper-plane{"aria-hidden" => "true"}
+      .timeline_view
+        - @timelines.each do |timeline|
+          %h2
+            = timeline.user.name
+          %p
+            = timeline.created_at.strftime("%Y/%m/%d %H:%M:%S")
+          - if timeline.image.present?
+            %h4
+              = image_tag timeline.image.url(:original)
+          - if timeline.text.present?
+            %h5
+              = timeline.text
+          - if timeline.user_id != current_user.id
+            = form_for([timeline, @review]) do |f|
+              = f.text_field :text, class: "review__form", placeholder: "知り合いのタイムラインにコメントしよう"
+              = f.label :image, class: "message_image_label"do
+                = fa_icon 'picture-o', class: "message_icon"
+                = f.file_field :image, style: "display: none"
+              = button_tag type: "submit" do
+                %i.fa.fa-paper-plane{"aria-hidden" => "true"}
+          - if timeline.user_id == current_user.id
+            %i.fa.fa-retweet{"aria-hidden" => "true"}
+            %i.fa.fa-share{"aria-hidden" => "true"}
+
+    .footer

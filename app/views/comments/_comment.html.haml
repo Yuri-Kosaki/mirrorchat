@@ -1,0 +1,16 @@
+- group.messages.each do |message|
+  - message.comments.each do |comment|
+    .comment.clearfix
+      %span
+        = comment.user.name
+      %p
+        = comment.created_at.strftime("%Y/%m/%d/ %H:%M:%S")
+      - if comment.user_id == current_user.id
+        = link_to group_message_comment_path(group, message, comment), method: :delete do
+          %i.fa.fa-times{"aria-hidden" => "true"}
+      - if comment.image.present?
+        %h4
+          = image_tag comment.image.url(:medium)
+      - if comment.text.present?
+        %h5
+          = comment.text

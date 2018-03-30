@@ -7,7 +7,13 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '38a52dcb39163801f2c01c15fc621d896289afed2ceecff74d2923a818657aa8958fc14664c37b2f8b4ffb55d9149edad175c95ad034179313621495b960af79'
-
+  require 'devise/orm/active_record'
+  config.omniauth :google_oauth2,
+                  ENV['
+227238058497-3hfug4lpi9q960j9ndnf3pa369j4f50d.apps.googleusercontent.com'], # 環境変数に先ほど控えたクライアントIDを入れておく
+                  ENV['NpKmrqoMO1Baaxa9-FygKal_'], # 環境変数に先ほど控えたシークレットを入れておく
+                  name: :google,
+                  scope: %w(email)
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class

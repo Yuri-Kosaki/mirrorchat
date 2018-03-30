@@ -1,5 +1,5 @@
 .content.clearfix
-  = render "module/groupsidemenu"
+  = render partial: 'module/sidemenu', locals: {groups: @groups, rooms: @rooms}
   .right_content.clearfix
     = form_for(@building, id: 'new_building') do |f|
       - if @building.errors.any?
