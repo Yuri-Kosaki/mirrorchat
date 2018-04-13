@@ -5,64 +5,86 @@
   .left_content {
     width: 300px;
     min-height: calc((100vh - 300px));;
-    color: #FFFFFF;
+    color: #eaedf7;
     float: left;
 
 
     .main_character.clearfix {
       height: 100px;
-      background-color: #2F4F4F;
+      background-color: #203744;
+      .user-image-tag {
+        border-radius: 15px;
+      }
       h1 {
         padding-left: 20px;
         line-height: 75px;
         font-size: 20px;
+        color: #eaedf7;
+        font-weight: bold;
       }
       .fa {
         padding-left: 40px;
         float: right;
         display: inline-block;
         font-size: 20px;
+        color: #eaedf7;
       }
     }
     .group_search.clearfix {
       height: 60px;
-      background-color: #4682B4;
+      background-color: #203744;
+      .group-search-form__input {
+        background-color: #eaedf7;
+        border-radius: 20px;
+      }
       .group-search-btn {
         font-family: FontAwesome;
         position: absolute;
         display: inline-block;
-        background-color: #4682B4;
+        background-color: #203744;
         float: right;
         font-size: 20px;
+        border-radius: 20px;
+        color: #eaedf7;
       }
     }
     .friend_search.clearfix {
       height: 60px;
-      background-color: #4682B4;
+      background-color: #203744;
+      .friend-search-form__input {
+        border-radius: 20px;
+        background-color: #eaedf7;
+      }
       .friend-search-btn {
         font-family: FontAwesome;
         position: absolute;
         display: inline-block;
-        background-color: #4682B4;
+        background-color: #203744;
         float: right;
         font-size: 20px;
+        border-radius: 20px;
+        color: #eaedf7;
       }
     }
     .groups_view {
       height: 290px;
-      background-color: #5F9EA0;
+      background-color: #203744;
       overflow: scroll;
       -webkit-overflow-scrolling: touch;
       span {
         line-height: 50px;
       }
       .group.clearfix {
-        border: solid 1px #5F9EA0;
 
         span {
           line-height: 50px;
           padding-left: 20px;
           font-size: 20px;
+          color: #eaedf7;
+          font-weight: bold;
+        }
+        .group-image-tag {
+          border-radius: 15px;
         }
 
         .fa {
@@ -70,31 +92,34 @@
           display: inline-block;
           line-height: 50px;
           font-size: 20px;
+          color: #eaedf7;
 
         }
       }
     }
     .friends_view {
       height: 290px;
-      background-color: #5F9EA0;
+      background-color: #203744;
       overflow: scroll;
       -webkit-overflow-scrolling: touch;
       span {
         line-height: 50px;
       }
       .friend.clearfix {
-        border: solid 1px #5F9EA0;
 
         span {
           line-height: 50px;
           padding-left: 20px;
           font-size: 20px;
+          color: #eaedf7;
+          font-weight: bold;
         }
         .fa {
           float: right;
           display: inline-block;
           line-height: 50px;
           font-size: 20px;
+          color: #eaedf7;
         }
       }
     }
@@ -105,12 +130,18 @@
     float: right;
 
     .group_name.clearfix {
-      background-color: #A9A9A9;
+      background-color: #202f55;
       height: 100px;
       span {
         padding-left: 40px;
         line-height: 80px;
         font-size: 32px;
+        color: #eaedf7;
+        font-weight: bold;
+      }
+
+      .group-image-tag {
+        border-radius: 25px;
       }
 
       .fa {
@@ -119,22 +150,69 @@
         padding-left: 30px;
         line-height: 90px;
         font-size: 30px;
+        color: #eaedf7;
       }
     }
     .chat_view {
-      background-color: #87CEEB;
+      background-color: #6699cc;
       height: 550px;
       overflow: scroll;
       -webkit-overflow-scrolling: touch;
       padding: 20px 30px 20px 30px;
+      .current_user-chat.clearfix {
+        margin: 30px 20px 0 550px;
+        background-color: #00ff7f;
+        color: black;
+        width: 360px;
+        opacity: 0.8;
+        border-radius: 20px;
+        padding: 10px 10px 10px 15px;
+
+        .user-image-tag {
+          border-radius: 15px;
+        }
+
+        span {
+          text-align: left;
+          font-weight: bold;
+          font-size: 20px;
+        }
+        p {
+          display: inline-block;
+          line-height: 30px;
+          text-align: left;
+          padding-left: 20px;
+          opacity: 0.3;
+        }
+        h5 {
+          text-align: left;
+          line-height: 30px;
+        }
+
+        .message-image-tag {
+          border-radius: 30px;
+        }
+        .fa {
+          float: right;
+          display: inline-block;
+          line-height: 35px;
+          padding-left: 5px;
+          font-size: 20px;
+        }
+      }
+
       .chat.clearfix {
         background-color: #FFFFFF;
         color: black;
-        width: 350px;
-        opacity: 0.5;
+        width: 360px;
+        opacity: 0.8;
         border-radius: 20px;
-        padding-left: 15px;
+        padding: 10px 10px 10px 15px;
         margin-top: 30px;
+
+        .user-image-tag {
+          border-radius: 15px;
+        }
 
         span {
           text-align: left;
@@ -162,26 +240,31 @@
       }
     }
     .form_view.clearfix {
-      background-color: #4682B4;
-      height: 100px;
+      background-color: #003366;
+      height: 110px;
       .form-field {
         height: 40px;
         width: 800px;
         margin-left: 30px;
         margin-top: 30px;
+        border-radius: 30px;
+        background-color: #eaedf7;
       }
-      .image-label {
+      .message_image_label {
         .fa {
         margin-top: 30px;
-        background-color: #4682B4;
+        background-color: #003366;
         height: 50px;
         font-size: 30px;
+        color: #eaedf7;
         }
       }
       #message-submit-btn {
-        background-color: #4682B4;
+        background-color: #003366;
+        border-radius: 30px;
         .fa {
         font-size: 30px;
+        color: #eaedf7;
         }
       }
     }

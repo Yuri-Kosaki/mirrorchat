@@ -1,0 +1,14 @@
+= form_for(timeline) do |f|
+  .timeline-form-header.clearfix
+    %span
+      = image_tag current_user.image.url(:thumb), class: "timeline-image"
+    .timeline-name
+      %h2
+        = current_user.name
+  .timeline-form-footer
+    = f.text_area :text, class: "timeline__form", placeholder: "あなたが今日起こった出来事を書こう"
+    = f.label :image, class: "timeline_image_label" do
+      = fa_icon 'picture-o', class: "timeline_icon"
+      = f.file_field :image, style: "display: none", class: "timeline_image"
+    = button_tag type: "submit", class: "timeline_submit" do
+      %i.fa.fa-paper-plane{"aria-hidden" => "true"}

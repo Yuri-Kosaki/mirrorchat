@@ -1,20 +1,39 @@
 - group.messages.each do |message|
-  .chat.clearfix{ "data-message-id": "#{message.id}"}
-    %span
-      = message.user.name
-    %p
-      = message.created_at.strftime("%Y/%m/%d %H:%M:%S")
-    - if message.user_id == current_user.id
+  - if message.user_id == current_user.id
+    .current_user-chat.clearfix{ "data-message-id": "#{message.id}"}
+      %span
+        = image_tag message.user.image.url(:thumb), class: "user-image-tag"
+        = link_to user_path(message.user_id) do
+          = message.user.name
+      %p
+        = message.created_at.strftime("%Y/%m/%d %H:%M:%S")
       = link_to [group, message], method: :delete do
         %i.fa.fa-times{"aria-hidden" => "true"}
       = link_to edit_group_message_path(group, message) do
         %i.fa.fa-pencil-square-o{"aria-hidden" => "true"}
+      - if message.comments.exists?
+        = link_to group_message_comments_path(group, message) do
+          %i.fa.fa-reply{"aria-hidden" => "true"}
+      - if message.image.present?
+        %h4
+          = image_tag message.image.url(:medium), class: "message-image-tag"
+      - if message.text.present?
+        %h5
+        = message.text
+  - if message.user_id != current_user.id
+    .chat.clearfix{ "data-message-id": "#{message.id}"}
+      %span
+        = image_tag message.user.image.url(:thumb), class: "user-image-tag"
+        = link_to user_path(message.user_id) do
+          = message.user.name
+      %p
+        = message.created_at.strftime("%Y/%m/%d %H:%M:%S")
       = link_to group_message_comments_path(group, message) do
         %i.fa.fa-reply{"aria-hidden" => "true"}
-    - if message.image.present?
-      %h4
-        = image_tag message.image.url(:medium)
-    - if message.text.present?
-      %h5
-        = message.text
+      - if message.image.present?
+        %h4
+          = image_tag message.image.url(:medium)
+      - if message.text.present?
+        %h5
+          = message.text
 

@@ -3,6 +3,7 @@ class GroupsController < ApplicationController
   def index
     @groups = Group.order("created_at ASC")
     @rooms = Room.order("created_at ASC")
+
   end
 
   def new
@@ -44,10 +45,10 @@ class GroupsController < ApplicationController
 
   private
   def group_params
-    params.require(:group).permit(:name, {user_ids: []})
+    params.require(:group).permit(:name, :image, :introduction, :status)
   end
 
   def update_group_params
-    params.require(:group).permit(:name, {user_ids: []}, messages_attributes: [:text, :image, :created_at, :_destroy, :id])
+    params.require(:group).permit(:name, :image, :introduction, :status, messages_attributes: [:text, :image, :created_at, :_destroy, :id])
   end
 end

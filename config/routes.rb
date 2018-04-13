@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users, controllers: {omniauth_callbacks: "users/omniauth_callbacks"}
+  devise_for :users
   root to: "groups#index"
 
   resources :groups do
@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :buildings
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -27,9 +27,10 @@ class RoomsController < ApplicationController
 
   private
   def room_params
-    params.require(:room).permit(user_ids: []).limit(2)
+    params.require(:room).permit(chats_attributes: [:text, :image, :created_at])
   end
 
   def update_room_params
+    params.require(:room).permit(chats_attributes: [:text, :image, :created_at, :_destroy, :id])
   end
 end

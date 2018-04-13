@@ -10,9 +10,13 @@
             %li #{full_message}
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
+        = f.label :image, "グループ画像", class: "chat-group-form__label"
         = f.label :name, "グループ名", class: "chat-group-form__label"
+        = f.label :status, "グループタイプ", class: "chat-group-form__label"
       .chat-group-form__field--right
+        = f.file_field :image, class: "chat-group-form__input"
         = f.text_field :name, class: "chat-group-form__input", placeholder: "グループ名を入力してください"
+        = f.select :status, ["Open", "Close"], class: "chat-group-form__input"
       .chat-group-form__field.clearfix
         .chat-group-form__field--left
           = f.label :introduction, "紹介", class: "chat-group-form__label"

@@ -1,16 +1,19 @@
-- group.messages.each do |message|
-  - message.comments.each do |comment|
-    .comment.clearfix
-      %span
+- message.comments.each do |comment|
+  .comment.clearfix
+    %span
+      = image_tag comment.user.image.url(:thumb), class: "user-image"
+      = link_to user_path(comment.user_id) do
         = comment.user.name
-      %p
-        = comment.created_at.strftime("%Y/%m/%d/ %H:%M:%S")
-      - if comment.user_id == current_user.id
+      = comment.created_at.strftime("%Y/%m/%d/ %H:%M:%S")
+    - if comment.user_id == current_user.id
+      .comment-operate
         = link_to group_message_comment_path(group, message, comment), method: :delete do
           %i.fa.fa-times{"aria-hidden" => "true"}
-      - if comment.image.present?
-        %h4
-          = image_tag comment.image.url(:medium)
-      - if comment.text.present?
-        %h5
-          = comment.text
+        = link_to edit_group_message_comment_path(group, message, comment) do
+          %i.fa.fa-pencil-square-o{"aria-hidden" => "true"}
+    - if comment.image.present?
+      %h4
+        = image_tag comment.image.url(:medium)
+    - if comment.text.present?
+      %h5
+        = comment.text

@@ -1,3 +1,193 @@
-// Place all the styles related to the timelines controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+  .right_content {
+
+    .header {
+      height: 70px;
+      background-color: #4169e1;
+      h1 {
+        color: #FFFFFF;
+        font-weight: bold;
+        font-size: 50px;
+        text-align: center;
+      }
+    }
+
+    .middle {
+      .timeline-form {
+        height: 200px;
+        padding: 15px 80px;
+        margin: 0 auto;
+        background-color: #f8f8ff;
+        .timeline-form-header.clearfix {
+          .timeline-image {
+            float: left;
+            height: 40px;
+            border-radius: 20px;
+            span {
+            }
+          }
+          .timeline-name {
+            float: left;
+            h2 {
+            padding-left: 10px;
+            font-size: 30px;
+            }
+          }
+        }
+        .timeline-form-footer {
+          .timeline__form {
+            height: 150px;
+            width: 700px;
+            padding: 10px 0 0 10px;
+            border-radius: 30px;
+          }
+          .timeline_image_label {
+            display: inline-block;
+            font-size: 40px;
+            padding-left: 10px;
+          }
+          .timeline_submit {
+            background-color: #f8f8ff;
+            display: inline-block;
+            font-size: 25px;
+            border-radius: 30px;
+            .fa {
+            }
+          }
+        }
+      }
+      .timeline_view {
+        height: 495px;
+        overflow: scroll;
+      -webkit-overflow-scrolling: touch;
+        background-color: #add8e6;
+        .timeline {
+          height: 360px;
+          width: 600px;
+          margin: 20px auto 50px;
+          padding: 10px 0 0;
+          background-color: #ffffff;
+          border-radius: 20px;
+          .timeline-semi-wrap {
+            height: 235px;
+            overflow: scroll;
+      -webkit-overflow-scrolling: touch;
+            .timeline-header.clearfix {
+              padding: 0 40px;
+              .timeline-image {
+                float: left;
+                border-radius: 15px;
+                }
+              .timeline-info {
+                float: left;
+                h3 {
+                  font-size: 20px;
+                  padding: 0 0 10px 10px;
+                  color: #c0c0c0;
+                }
+              }
+            }
+            .timeline-middle {
+              padding: 0 40px 0 100px;
+              .timeline-image {
+                border-radius: 30px;
+                height: 300px;
+              }
+              .timeline-image-tag {
+                border-radius: 30px;
+              }
+              h5 {
+                font-size: 30px;
+              }
+            }
+          }
+          .timeline-retweet.clearfix {
+            height: 30px;
+            padding-left: 300px;
+            background-color: #7fffd4;
+            .timeline-tuner {
+              float: left;
+              .fa {
+                display: inline-block;
+                font-size: 30px;
+              }
+              span {
+                font-size: 30px;
+              }
+            }
+          }
+          .timeline-review-form {
+            height: 100px;
+            background-color: #4682b4;
+            border-radius: 20px;
+            padding-top: 10px;
+            margin-top: 10px;
+            .review__form {
+              height: 50px;
+              width: 450px;
+              margin: 10px;
+              border-radius: 30px;
+            }
+            .review_image_label {
+              display: inline-block;
+              font-size: 30px;
+            }
+            .review_submit {
+              background-color: #4682b4;
+              display: inline-block;
+              font-size: 25px;
+              border-radius: 20px;
+              .fa {
+              }
+            }
+          }
+          .timeline-operate.clearfix {
+            margin-top: 50px;
+            height: 65px;
+            background-color: #dcdcdc;
+            .timeline-delete {
+              float: left;
+              width: 165px;
+              height: 65px;
+              background-color: #e9967a;
+              border-radius: 20px;
+              .fa {
+                display: inline-block;
+                font-size: 30px;
+                padding-left: 100px;
+                line-height: 60px;
+              }
+            }
+            .timeline-edit {
+              float: left;
+              width: 165px;
+              height: 65px;
+              background-color: #e0ffff;
+              border-radius: 20px;
+              .fa {
+                display: inline-block;
+                font-size: 30px;
+                padding-left: 100px;
+                line-height: 60px;
+              }
+            }
+            .timeline-retweets {
+              float: left;
+              width: 165px;
+              padding-left: 100px;
+              height: 65px;
+              background-color: #7fffd4;
+              border-radius: 20px;
+              .fa {
+                display: inline-block;
+                font-size: 30px;
+                line-height: 60px;
+              }
+              span {
+                font-size: 30px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }

@@ -1,3 +1,79 @@
-// Place all the styles related to the reviews controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.user_review {
+  height: 250px;
+  overflow: scroll;
+-webkit-overflow-scrolling: touch;
+  background-color: #ffe0c1;
+  h1 {
+    font-size: 24px;
+    font-weight: bold;
+    padding-left: 20px;
+  }
+  .review-green {
+    height: 80px;
+    width: 600px;
+    margin: 10px auto;
+    border: solid 1px;
+    padding: 10px 20px;
+    background-color: #84ff84;
+    border-radius: 30px;
+    .review-box.clearfix {
+      .review-image {
+        float: left;
+        border-radius: 15px;
+      }
+      .review-info {
+        float: left;
+        padding-bottom: 10px;
+        h3 {
+          font-size: 18px;
+          color: #c0c0c0;
+        }
+      }
+      .review-delete {
+        float: right;
+      }
+    }
+    .review-content {
+      .review-image-tag {
+        border-radius: 30px;
+      }
+      h5 {
+        font-size: 20px;
+      }
+    }
+  }
+  .review {
+    height: 80px;
+    width: 600px;
+    margin: 10px auto;
+    border: solid 1px;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    border-radius: 30px;
+    .review-box.clearfix {
+      .review-image {
+        float: left;
+        border-radius: 15px;
+      }
+      .review-info {
+        float: left;
+        padding-bottom: 10px;
+        h3 {
+          font-size: 18px;
+          color: #c0c0c0;
+        }
+      }
+      .review-delete {
+        float: right;
+      }
+    }
+    .review-content {
+      .review-image-tag {
+        border-radius: 30px;
+      }
+      h5 {
+        font-size: 20px;
+      }
+    }
+  }
+}

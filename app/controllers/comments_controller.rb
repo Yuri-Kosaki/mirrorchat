@@ -22,6 +22,9 @@ class CommentsController < ApplicationController
   end
 
   def edit
+    @groups = Group.order("created_at ASC")
+    @rooms = Room.order("created_at ASC")
+    @comment = Comment.find(params[:id])
   end
 
   def update
