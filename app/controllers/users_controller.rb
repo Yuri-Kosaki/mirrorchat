@@ -1,12 +1,5 @@
 class UsersController < ApplicationController
 
-  def index
-    @users = User.order("created_at ASC")
-    @groups = Group.order("created_at ASC")
-    @user = User.find(params[:id])
-    @message = Message.new
-    @group__search = Group.new
-  end
 
   def edit
     @user = User.find(params[:id])
@@ -28,9 +21,16 @@ class UsersController < ApplicationController
       redirect_to root_path
   end
 
+  def show
+    @groups = Group.order("created_at ASC")
+    @rooms = Room.order("created_at ASC")
+    @user = User.find(params[:id])
+    @new_user = User.new
+  end
+
 
   private
   def update_user_params
-    params.require(:user).permit(:name, :hobby, :place, :year, messages_attributes: [:text, :created_at, :_destroy, :id])
+    params.require(:user).permit(:name, :hobby, :place, :year, :image, :role)
   end
 end

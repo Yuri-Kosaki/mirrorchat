@@ -15,7 +15,7 @@
     = f.label 'パスワード'
     %i (変えなくていいなら空白)
     %br/
-    = f.password_field :password, autocomplete: "off"
+    = f.password_field :password
     - if @minimum_password_length
       %br/
       %em
@@ -24,12 +24,32 @@
   .field
     = f.label '確認用パスワード'
     %br/
-    = f.password_field :password_confirmation, autocomplete: "off"
+    = f.password_field :password_confirmation
   .field
     = f.label '現在のパスワード'
     %i (確認用)
     %br/
     = f.password_field :current_password, autocomplete: "off"
+  .field
+    = f.label :hobby
+    %br/
+    = f.text_area :hobby, autofocus: true, placeholder: "あなたの趣味はなんですか？"
+  .field
+    = f.label :place
+    %br/
+    = f.text_area :place, autofocus: true, placeholder: "あなたはどこにお住まいですか？"
+  .field
+    = f.label :year
+    %br/
+    = f.text_field :year, autofocus: true, placeholder: "〇〇年××月△△日生"
+  .field
+    = f.label :image
+    %br/
+    = f.file_field :image
+  .field
+    = f.label :role
+    %br/
+    = f.select :role, ["Leader", "Subleader", "Member"]
   .actions
     = f.submit "送信"
 %h3 アカウントの変更

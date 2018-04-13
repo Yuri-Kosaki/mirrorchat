@@ -3,16 +3,36 @@
   .right_content.clearfix
     .group_name.clearfix
       = render partial: 'module/group-header', locals: {group: @group}
-    .message-field
-      = text_field :message, :text, class: "message-field"
+    .message_view
+      .chat.clearfix
+        %span
+          = image_tag @message.user.image.url(:thumb), class: "user-image-tag"
+          = link_to user_path(@message.user_id) do
+            = @message.user.name
+        %p
+          = @message.created_at.strftime("%Y/%m/%d %H:%M:%S")
+        - if @message.user_id == current_user.id
+          = link_to [@group, @message], method: :delete do
+            %i.fa.fa-times{"aria-hidden" => "true"}
+          = link_to edit_group_message_path(@group, @message) do
+            %i.fa.fa-pencil-square-o{"aria-hidden" => "true"}
+        - if @message.image.present?
+          %h4
+            = image_tag @message.image.url(:medium)
+        - if @message.text.present?
+          %h5
+            = @message.text
+
     .comment-form
       = form_for([@group, @message, @comment]) do |f|
         = f.text_field :text, class: "comment-field", placeholder: "コメントしてください"
-        = f.label :image, class: "message_image_label"do
-          = fa_icon 'picture-o', class: "message_icon"
+        = f.label :image, class: "comment_image_label"do
+          = fa_icon 'picture-o', class: "comment_icon"
           = f.file_field :image, style: "display: none"
-        = button_tag type: "submit" do
+        = button_tag type: "submit", class: "comment-submit-button" do
           %i.fa.fa-paper-plane{"aria-hidden" => "true"}
-
     .comment-view
-      = render partial: 'comment', locals: {group: @group}
+      - if @message.comments.exists?
+        = render partial: 'comment', locals: {group: @group, message: @message}
+      - else
+        %p あなたが一番乗りです。コメントしましょう!!

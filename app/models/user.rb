@@ -5,7 +5,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: %i(google)
+         :recoverable, :rememberable, :trackable, :validatable
 
   has_many :messages, dependent: :destroy
   has_many :groups, through: :members
@@ -17,21 +17,10 @@ class User < ApplicationRecord
   has_many :comments
   has_many :reviews
 
-  accepts_nested_attributes_for :messages, allow_destroy: true
 
-  protected
+  has_attached_file :image, styles: { original: "100x100>", short: "70x70>", medium: "50x50#", thumb: "30x30#"}, default_url: "/images/:style/Masketeer.png", path: "#{Rails.root}/public/system/:class/image/:id.:style.:extension",
+url:"/system/:class/image/:id.:style.:extension"
 
-  def self.find_for_google(auth)
-    user = User.find_by(email: auth.info.email)
+  validates_attachment :image, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png"]}
 
-    unless user
-      user = User.create(name:     auth.info.name,
-                         provider: auth.provider,
-                         uid:      auth.uid,
-                         token:    auth.credentials.token,
-                         password: Devise.friendly_token[0, 20],
-                         meta:     auth.to_yaml)
-    end
-    user
-  end
 end

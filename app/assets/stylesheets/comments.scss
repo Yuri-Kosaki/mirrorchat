@@ -1,3 +1,116 @@
-// Place all the styles related to the comments controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.message_view {
+  background-color: #87CEEB;
+  padding: 30px 0;
+  .chat.clearfix {
+    background-color: #FFFFFF;
+    color: black;
+    height: 250px;
+    width: 350px;
+    opacity: 0.5;
+    border-radius: 20px;
+    padding: 10px 10px 10px 15px;
+    margin: 0 auto ;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+
+    .user-image-tag {
+      border-radius: 15px;
+    }
+
+    span {
+      text-align: left;
+      font-weight: bold;
+      font-size: 20px;
+    }
+    p {
+      display: inline-block;
+      line-height: 30px;
+      text-align: left;
+      padding-left: 20px;
+      opacity: 0.3;
+    }
+    h5 {
+      text-align: left;
+      line-height: 30px;
+    }
+    .fa {
+      float: right;
+      display: inline-block;
+      line-height: 35px;
+      padding-left: 10px;
+      font-size: 20px;
+    }
+  }
+}
+
+.comment-form {
+  background-color: #ffb770;
+  height: 70px;
+  .comment-field {
+    height: 30px;
+    width: 600px;
+    margin: 15px 0 15px 200px;
+    border-radius: 30px;
+  }
+  .comment_image_label {
+    font-size: 30px;
+  }
+  .comment-submit-button {
+    background-color: #ffb770;
+    font-size: 25px;
+    border-radius: 20px;
+  }
+}
+
+.comment-view {
+  background-color: #75ffba;
+  height: 300px;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+
+  p {
+      font-size: 25px;
+      font-weight: bold;
+      text-align: center;
+      line-height: 250px;
+      color: #656565;
+    }
+  .comment.clearfix {
+    width: 600px;
+    height: 80px;
+    margin: 20px auto;
+    padding: 10px;
+    border: 1px solid;
+    background-color: #ffffff;
+    overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+    border-radius: 30px;
+    .user-image {
+      float: left;
+      border-radius: 15px;
+    }
+
+    .comment-operate {
+      float: right;
+      .fa {
+        padding-left: 5px;
+        font-size: 25px;
+      }
+    }
+
+
+    span {
+      color: #e0e0e0;
+      padding-left: 10px;
+      }
+    h4 {
+      padding-top: 20px;
+      border-radius: 30px;
+    }
+    h5 {
+      padding-top: 10px;
+      font-size: 20px;
+    }
+  }
+}
+

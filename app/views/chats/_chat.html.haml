@@ -1,17 +1,33 @@
 - room.chats.each do |chat|
-  .chat.clearfix
-    %span
-      = chat.user.name
-    %p
-      = chat.created_at.strftime("%Y/%m/%d %H:%M:%S")
-    - if chat.user_id == current_user.id
+  - if chat.user_id == current_user.id
+    .current_user-chat.clearfix
+      %span
+        = image_tag chat.user.image.url(:thumb), class: "user-image-tag"
+        = link_to user_path(chat.user_id) do
+          = chat.user.name
+      %p
+        = chat.created_at.strftime("%Y/%m/%d %H:%M:%S")
       = link_to [room, chat], method: :delete do
         %i.fa.fa-times{"aria-hidden" => "true"}
       = link_to edit_room_chat_path(room, chat) do
         %i.fa.fa-pencil-square-o{"aria-hidden" => "true"}
-    - if chat.image.present?
-      %h4
-        = image_tag chat.image.url(:medium)
-    - if chat.text.present?
-      %h5
+      - if chat.image.present?
+        %h4
+          = image_tag chat.image.url(:medium), class: "message-image-tag"
+      - if chat.text.present?
+        %h5
         = chat.text
+  - if chat.user_id != current_user.id
+    .chat.clearfix
+      %span
+        = image_tag chat.user.image.url(:thumb), class: "user-image-tag"
+        = link_to user_path(chat.user_id) do
+          = chat.user.name
+      %p
+        = chat.created_at.strftime("%Y/%m/%d %H:%M:%S")
+      - if chat.image.present?
+        %h4
+          = image_tag chat.image.url(:medium)
+      - if chat.text.present?
+        %h5
+          = chat.text

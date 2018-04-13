@@ -57,6 +57,10 @@ class MessagesController < ApplicationController
 
   private
   def message_params
-    params.require(:message).permit(:text, :image).merge(group_id: params[:group_id], user_id: current_user.id)
+    params.require(:message).permit(:text, :image, comments_attributes: [:text, :image, :created_at]).merge(group_id: params[:group_id], user_id: current_user.id)
+  end
+
+  def update_message_params
+    params.require(:message).permit(:text, :image, comments_attributes: [:text, :image, :created_at, :_destroy, :id]).merge(group_id: params[:group_id], user_id: current_user.id)
   end
 end

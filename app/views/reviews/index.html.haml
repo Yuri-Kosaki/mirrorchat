@@ -1,0 +1,75 @@
+.content.clearfix
+  = render partial: 'module/sidemenu', locals: {groups: @groups, rooms: @rooms}
+  .right_content
+    .header
+      %h1 タイムライン
+    .middle
+      .timeline_view
+        .timeline
+          .timeline-semi-wrap
+            .timeline-header.clearfix
+              %span
+                = image_tag @timeline.user.image.url(:thumb), class: "timeline-image"
+              .timeline-info
+                %h3
+                  = link_to user_path(@timeline.user_id) do
+                    = @timeline.user.name
+                  = @timeline.created_at.strftime("%Y/%m/%d %H:%M:%S")
+            .timeline-middle
+              - if @timeline.image.present?
+                %h4
+                  = image_tag @timeline.image.url(:original), class: "timeline-image-tag"
+              - if @timeline.text.present?
+                %h5
+                  = @timeline.text
+          = form_for([@timeline, @review]) do |f|
+            .timeline-review-form
+              = f.text_field :text, class: "review__form", placeholder: "友達からのコメントを返信しよう!!"
+              = f.label :image, class: "review_image_label" do
+                = fa_icon 'picture-o', class: "review_icon"
+                = f.file_field :image, style: "display: none", class: "review_image"
+              = button_tag type: "submit", class: "review_submit" do
+                %i.fa.fa-paper-plane{"aria-hidden" => "true"}
+    .user_review
+      %h1 - コメント一覧 -
+      - @timeline.reviews.each do |review|
+        - if review.user_id == current_user.id
+          .review-green
+            .review-box.clearfix
+              %span
+                = image_tag review.user.image.url(:thumb), class: "review-image"
+              .review-info
+                %h3
+                  = link_to user_path(review.user_id) do
+                    = review.user.name
+                  = review.created_at.strftime("%Y/%m/%d %H:%M:%S")
+              .review-delete
+                = link_to timeline_review_path(@timeline, review), method: :delete do
+                  %p 削除
+                = link_to edit_timeline_review_path(@timeline, review) do
+                  %p 編集
+            .review-content
+              - if review.image.present?
+                %h4
+                  = image_tag review.image.url(:medium), class: "review-image-tag"
+              - if review.text.present?
+                %h5
+                  = review.text
+        - if review.user_id != current_user.id
+          .review
+            .review-box.clearfix
+              %span
+                = image_tag review.user.image.url(:thumb), class: "review-image"
+              .review-info
+                %h3
+                  = link_to user_path(review.user_id) do
+                    = review.user.name
+                  = review.created_at.strftime("%Y/%m/%d %H:%M:%S")
+            .review-content
+              - if review.image.present?
+                %h4
+                  = image_tag review.image.url(:medium), class: "review-image-tag"
+              - if review.text.present?
+                %h5
+                  = review.text
+
